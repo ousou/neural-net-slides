@@ -19,6 +19,8 @@
 
 \newcommand{\kur}{\protect\textit}
 \newcommand{\bol}{\protect\textbf}
+\newcommand\pro{\item[$+$]}
+\newcommand\con{\item[$-$]}
 
 \def\layersep{2.2cm}
 \begin{document}
@@ -87,6 +89,55 @@
 		\item Less need for feature engineering compared to traditional ML methods
 	\end{itemize}
   \end{frame}
+  
+  \begin{frame}
+    \frametitle{Recurrent neural network (RNN)}  
+    
+	TODO: Picture here   
+	
+	Processes each element of the input sequence in order, and keeps information about the past elements in a hidden state vector
+
+  \end{frame}  
+  
+  \begin{frame}
+    \frametitle{RNN pros and cons}  
+    
+   	\begin{itemize}
+		\pro Accepts input of variable size, i.e. sequences (time series, sentences etc)
+		\pro May learn long-term dependencies
+		\con Training may be slow when sequence length is large
+		\con Can be hard to train
+	\end{itemize}
+  \end{frame}    
+
+  \begin{frame}
+    \frametitle{Convolutional neural network (CNN)}  
+    
+	TODO: Picture here    
+
+  Extracts features of two-dimensional input (usually an image) using convolutional and pooling layers.
+
+  \end{frame}  
+  
+  \begin{frame}
+    \frametitle{CNN pros and cons}  
+    
+   	\begin{itemize}
+		\pro Works well with image data
+		\con Pre-existing models can be fine-tuned for specific tasks
+		\con Does not take into account position or orientation of the object
+	\end{itemize}
+  \end{frame}    
+
+  \begin{frame}
+    \frametitle{Challenges when training neural networks}  
+    
+   	\begin{itemize}
+		\item Finding the optimal neural network layout is often time-consuming
+		\item The model may be sensitive to changes in hyperparameters
+		\item A model may take several hours or even days to train. 
+	\end{itemize}
+  \end{frame}  
 
 %   
    \begin{frame}
