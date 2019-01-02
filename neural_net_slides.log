@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.13)  2 JAN 2019 13:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.13)  2 JAN 2019 13:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -696,10 +696,18 @@ Package: beamerinnerthemedefault 2014/06/30  (rcs-revision 580088513a67)
 fault.sty
 Package: beamerouterthemedefault 2012/12/19  (rcs-revision 1686da3db3c9)
 )))
-(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/theme/beamerthemeBergen.
-sty
-Package: beamerthemeBergen 2010/06/17  (rcs-revision d02a7cf4d8ae)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/theme/beamerthemeAntibes
+.sty
+Package: beamerthemeAntibes 2010/06/17  (rcs-revision d02a7cf4d8ae)
 
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/outer/beamerouterthemetr
+ee.sty
+Package: beamerouterthemetree 2010/06/17  (rcs-revision d02a7cf4d8ae)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/color/beamercolorthemewh
+ale.sty
+Package: beamercolorthemewhale 2010/06/17  (rcs-revision d02a7cf4d8ae)
+)
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/color/beamercolorthemeor
 chid.sty
 Package: beamercolorthemeorchid 2010/06/17  (rcs-revision d02a7cf4d8ae)
@@ -707,10 +715,6 @@ Package: beamercolorthemeorchid 2010/06/17  (rcs-revision d02a7cf4d8ae)
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/inner/beamerinnerthemere
 ctangles.sty
 Package: beamerinnerthemerectangles 2010/06/17  (rcs-revision d02a7cf4d8ae)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/inner/beamerinnerthemein
-margin.sty
-Package: beamerinnerthemeinmargin 2010/06/17  (rcs-revision d02a7cf4d8ae)
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/color/beamercolorthemebe
 aver.sty
@@ -1121,14 +1125,14 @@ LaTeX Font Info:    ... okay on input line 24.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: includehead includefoot 
-* h-part:(L,W,R)=(98.3488pt, 258.54659pt, 7.29997pt)
+* h-part:(L,W,R)=(28.45274pt, 307.28987pt, 28.45274pt)
 * v-part:(T,H,B)=(0.0pt, 273.14662pt, 0.0pt)
 * \paperwidth=364.19536pt
 * \paperheight=273.14662pt
-* \textwidth=258.54659pt
+* \textwidth=307.28987pt
 * \textheight=244.6939pt
-* \oddsidemargin=26.07881pt
-* \evensidemargin=26.07881pt
+* \oddsidemargin=-43.81725pt
+* \evensidemargin=-43.81725pt
 * \topmargin=-72.26999pt
 * \headheight=14.22636pt
 * \headsep=0.0pt
@@ -1269,15 +1273,19 @@ LaTeX Info: Redefining \includegraphics on input line 24.
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
 (Font)              size <5> substituted on input line 26.
 
-[1
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (8.13104pt too wide) in paragraph at lines 78--78
+[][]  
+ []
+
 LaTeX Font Info:    Try loading font information for U+msa on input line 78.
-
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
@@ -1317,23 +1325,23 @@ LaTeX Font Warning: Size substitutions with differences
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 103.
  ) 
 Here is how much of TeX's memory you used:
- 19932 strings out of 494910
- 391887 string characters out of 6179835
- 475040 words of memory out of 5000000
- 22756 multiletter control sequences out of 15000+600000
- 11897 words of font info for 45 fonts, out of 8000000 for 9000
+ 19962 strings out of 494910
+ 393118 string characters out of 6179835
+ 478594 words of memory out of 5000000
+ 22783 multiletter control sequences out of 15000+600000
+ 11590 words of font info for 44 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 50i,14n,70p,414b,962s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 50i,15n,70p,415b,962s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on neural_net_slides.pdf (4 pages, 72585 bytes).
+Output written on neural_net_slides.pdf (4 pages, 73365 bytes).
 PDF statistics:
- 157 PDF objects out of 1000 (max. 8388607)
- 134 compressed objects within 2 object streams
+ 162 PDF objects out of 1000 (max. 8388607)
+ 138 compressed objects within 2 object streams
  11 named destinations out of 1000 (max. 500000)
  43 words of extra memory for PDF output out of 10000 (max. 10000000)
 
