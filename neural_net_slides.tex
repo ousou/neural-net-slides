@@ -1,0 +1,221 @@
+\documentclass{beamer}
+\usetheme{Bergen}
+\usecolortheme{beaver}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+
+\def\insertauthorindicator{Who?}% Default is "Who?"
+\def\insertinstituteindicator{From?}% Default is "From?"
+\def\insertdateindicator{When?}% Default is "When?"
+
+\title{Neural networks}
+\subtitle{Architectures and training tips}
+
+\author{Sebastian Bj{\"o}rkqvist}
+\institute{IPRally Technologies}
+
+\date[09.01.2019]{09.01.2019}
+
+\newcommand{\kur}{\protect\textit}
+\newcommand{\bol}{\protect\textbf}
+
+\begin{document}
+
+\frame{\titlepage}
+
+  \begin{frame}
+    \frametitle{Why neural networks?}  
+    
+   	\begin{itemize}
+		\item Can approximate any function \cite{hornik}
+		\item May learn to respond to unexpected patterns
+		\item Useful especially when the amount of data is large
+		\item Less need for feature engineering compared to traditional ML methods
+	\end{itemize}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Mit{\"a} on informaatio?}   
+    \Large Algoritmien ollessa kyseess{\"a} \bol{Churchin-Turingin teesi} kertoo mink{\"a}laiset asiat ovat laskettavissa. \\
+    
+    \vspace{8mm}
+    
+    \onslide<2->{Mill{\"a} tavalla voidaan vastaavasti \\ m{\"a}{\"a}ritell{\"a} informaatio?}
+    
+  \end{frame}
+  
+ 
+  \begin{frame}
+    \frametitle{Merkkijonon informaatiom{\"a}{\"a}r{\"a}}   
+	
+	\Large Haluamme m{\"a}{\"a}ritell{\"a} jonon informaatiom{\"a}{\"a}r{\"a}n ja verrata sit{\"a} \\ jonon pituuteen.
+    
+	\vspace{8mm}
+   
+    Informaatiom{\"a}{\"a}r{\"a} on siis merkkijono.
+  \end{frame}  
+  
+  \begin{frame}
+    \frametitle{Merkkijonon lyhin kuvaus}   
+    \Large Olkoon $x$ merkkijono bin{\"a}{\"a}rimuodossa. Jonon $x$ \bol{lyhin kuvaus} $d(x)$ on lyhin merkkijono $\langle M,w \rangle$, jolle p{\"a}tee ett{\"a} Turingin kone \kur{M}  palauttaa merkkijonon $x$ sy{\"o}tteell{\"a} $w$.  \\  
+    \vspace{10px}
+    
+    M{\"a}{\"a}rittelemme jonon $\langle M,w \rangle$ konkatenoituna merkkijonona \kur{M}\kur{w}.
+    
+  \end{frame}  
+ 
+  \begin{frame}
+    \frametitle{Kolmogorov-kompleksiteetti}   
+    
+    \Large Jonon $x$ \bol{Kolmogorov-kompleksiteetti} \\ $K(x)$ on jonon lyhimm{\"a}n kuvauksen pituus, toisin sanoen
+
+    \begin{center}
+    		\huge $K(x) = |d(x)|$
+    \end{center}
+  \end{frame}   
+  
+   \begin{frame}
+    \frametitle{Kolmogorov-kompleksiteetin perustuloksia}   
+    \Large On olemassa vakiot $c_{1}$ ja $c_{2}$, joille p{\"a}tee
+    
+    \begin{enumerate}
+    		\item $K(x) \: \: \le |x| + c_{1}$
+    		\item $K(xx) \le K(x) + c_{2}$
+    \end{enumerate}
+    
+	kaikilla merkkijonoilla $x$. 
+    
+   \end{frame}   
+   
+   \begin{frame}
+    \frametitle{Konkatenoidun jonon kompleksiteetti} 
+	\Large Kahden mielivaltaisen jonon konkatenaation kompleksiteetille voimme helposti todistaa seuraavan yl{\"a}rajan:
+	
+	\vspace{7mm}
+	
+	\Large On olemassa vakio $c$, jolle p{\"a}tee
+	
+	\begin{itemize}
+		\item $K(xy) \le 2\cdot K(x) + K(y) + c$
+	\end{itemize}
+	
+	\vspace{2mm}	
+	
+	kaikilla merkkijonoilla $x$ ja $y$.
+   \end{frame}  
+   
+   \begin{frame}
+    \frametitle{Konkatenoidun jonon kompleksiteetti}    
+    
+    \Large Todistuksen idea: Tuplataan kuvauksen $d(x)$ bitit, ja konkatenoidaan per{\"a}{\"a}n kuvaus $d(y)$. V{\"a}liin lis{\"a}t{\"a}{\"a}n erotin 01.
+
+	\vspace{3mm}    
+    \Large \onslide<2->{Esimerkiksi jonoilla $d(x) = 0110110$ ja $d(y) = 1110001$ saadaan }
+  
+    \onslide<3->{\[
+\underbrace{00111100111100}_{\text{d(x) tuplattuna}}01\underbrace{1110001}_\text{d(y)}
+\]}
+   \end{frame}    
+   
+   \begin{frame}
+    \frametitle{Konkatenoidun jonon kompleksiteetti}
+   
+   \Large Voimme saavuttaa my{\"o}s yl{\"a}rajan 
+   
+   	\begin{itemize}
+		\item $K(xy) \le 2\cdot log_{2}(K(x)) + K(x) + K(y) + c$,
+	\end{itemize}
+	
+	\onslide<2->{mutta osoittautuu mahdottomaksi saavuttaa raja}
+	
+	\begin{itemize}
+		\item<2-> $K(xy) \le K(x) + K(y) + c$.
+	\end{itemize}
+   \end{frame}    
+    
+   \begin{frame}
+    \frametitle{Kolmogorov-kompleksiteetin optimaalisuus}
+    
+    \Large Turingin koneen vaihtaminen joksikin muuksi funktioksi m{\"a}{\"a}ritelm{\"a}ss{\"a} ei olennaisesti muuta merkkijonon kompleksiteettia.
+    
+    \vspace{8mm}
+    
+    T{\"a}m{\"a} johtuu siit{\"a}, ett{\"a} voimme simuloida kaikkia algoritmeja Turingin koneella.
+    
+   \end{frame}    
+   
+   \begin{frame}
+    \frametitle{Tiivistyv{\"a}t merkkijonot}
+    
+    \Large Merkkijono $x$ on \bol{c-tiivistyv{\"a}}, jos
+    	\begin{center}
+    		$K(x) \leq |x| - c$.
+    	\end{center}
+    	
+    Jos merkkijono ei ole 1-tiivistyv{\"a}, on se \bol{tiivistym{\"a}t{\"o}n}.
+   
+   \end{frame}  
+   
+   \begin{frame}
+    \frametitle{Tiivistym{\"a}t{\"o}n merkkijono?}
+    
+    \Large Onko olemassa tiivistym{\"a}tt{\"o}mi{\"a} merkkijonoja?
+    
+    \vspace{3mm}
+
+	\onslide<2->{Pituutta n olevia merkkijonoja on $2^{n}$ kappaletta,}
+	\onslide<2->{mutta t{\"a}t{\"a} lyhyempi{\"a} merkkijonoja on vain $2^{n}-1$ kappaletta.\\}
+	\vspace{3mm}
+	\onslide<2->{Ainakin yksi pituutta n oleva jono on siis tiivistym{\"a}t{\"o}n.}
+   
+   \end{frame}
+     
+   \begin{frame}
+    \frametitle{Kompleksiteetin m{\"a}{\"a}ritt{\"a}minen}
+    
+    \Large Brute force-algoritmi ei toimi, sill{\"a} saatamme ajautua ikuiseen silmukkaan. 
+    
+	\vspace{3mm}    
+    
+    \onslide<2->{Yleist{\"a} algoritmia kompleksiteetin m{\"a}{\"a}ritt{\"a}miselle ei ole. \\}
+    
+    \vspace{3mm}
+    \onslide<2->{Ongelma on itseasiassa Turing-yht{\"a}pit{\"a}v{\"a} \\
+    \vspace{2mm} 
+    pys{\"a}htymisongelman kanssa.}    
+   \end{frame}
+   
+   \begin{frame}
+    \frametitle{Tiivistym{\"a}tt{\"o}m{\"a}n jonon ominaisuuksia} 
+    
+    \Large Yleisesti ei ole mahdollista selvitt{\"a}{\"a}, onko jokin jono tiivistym{\"a}t{\"o}n. \\
+	\vspace{3mm}   
+	\Large Tiivistym{\"a}tt{\"o}mill{\"a} jonoilla on paljon samoja ominaisuuksia kuin satunnaisilla jonoilla. \\   
+	\vspace{3mm}
+	\Large Jonon lyhin kuvaus $d(x)$ on l{\"a}hes tiivistym{\"a}t{\"o}n.
+    
+   \end{frame}   
+   
+   \begin{frame}
+    \frametitle{Yhteenveto}
+    
+   \begin{itemize}
+	\Large \item Kolmogorov-kompleksiteetti kertoo merkkijonon informaatiosis{\"a}ll{\"o}n
+	\item Kompleksiteetti ei olennaisesti riipu k{\"a}ytetyst{\"a} laskentamallista
+	\item Tiivistym{\"a}tt{\"o}m{\"a}t jonot ovat satunnaisjonojen kaltaisia
+	\item Kompleksiteettia ei yleens{\"a} voida m{\"a}{\"a}ritt{\"a}{\"a}
+   \end{itemize}
+   \end{frame}   
+   
+   \begin{frame}
+   	\frametitle{References}
+   	\begin{thebibliography}{Hornik, 1991}
+
+  \bibitem[Nielsen, 2015]{nielsen} Nielsen, Michael A. {\em Neural Networks And Deep Learning}. Determination Press, 2015. \url{http://neuralnetworksanddeeplearning.com/}
+  
+  \bibitem[Hornik, 1991]{hornik} Hornik, Kurt. {\em Approximation Capabilities of Multilayer Feedforward Networks}. Neural Networks, 4(2), 251--257, 1991.
+    
+	\end{thebibliography}   
+   \end{frame}  
+
+\end{document}
