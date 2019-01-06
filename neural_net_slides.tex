@@ -85,16 +85,16 @@
 	\begin{align*}
     o_{i} = \sigma(\sum{w_{ki}o_{ki-1}} + b_{i}). 
     \end{align*}
-    The function $\sigma$ is called the activation function. It must be non-linear to allow the network to learn non-linear dependencies.
+    \onslide<2->{The function $\sigma$ is called the activation function. It must be non-linear to allow the network to learn non-linear dependencies.}
   \end{frame} 
   \begin{frame}
     \frametitle{Why neural networks?}  
     
    	\begin{itemize}
 		\item Can approximate any function \cite{hornik}
-		\item May learn to respond to unexpected patterns
-		\item Useful especially when the amount of data is large
-		\item Less need for feature engineering compared to traditional ML methods
+		\onslide<2->{\item May learn to respond to unexpected patterns}
+		\onslide<3->{\item Useful especially when the amount of data is large}
+		\onslide<4->{\item Less need for feature engineering compared to traditional ML methods}
 	\end{itemize}
   \end{frame}
   
@@ -149,17 +149,17 @@
     h_{t} = \sigma(Wh_{t-1} + Ui_{t} + b). 
     \end{align*}	
 	
-  Other RNN architectures (for instance LSTM or GRU) use more complicated ways of updating the hidden state to control the flow of information to and from the hidden state.
+  \onslide<2->{Other RNN architectures (for instance LSTM or GRU) use more complicated ways of updating the hidden state to control the flow of information to and from the hidden state.}
   \end{frame}      
   
   \begin{frame}
     \frametitle{RNN pros and cons}  
     
    	\begin{itemize}
-		\pro Accepts input of variable size, i.e. sequences (time series, sentences etc)
-		\pro May learn long-term dependencies
-		\con Training may be slow when sequence length is large
-		\con Can be hard to train
+		\onslide<2->{\pro Accepts input of variable size, i.e. sequences (time series, sentences etc)}
+		\onslide<3->{\pro May learn long-term dependencies}
+		\onslide<4->{\con Training may be slow when sequence length is large}
+		\onslide<5->{\con Can be hard to train}
 	\end{itemize}
   \end{frame}    
 
@@ -176,9 +176,10 @@
     \frametitle{CNN pros and cons}  
     
    	\begin{itemize}
-		\pro Works well with image data
-		\con Pre-existing models can be fine-tuned for specific tasks
-		\con Does not take into account position or orientation of the object
+		\onslide<2->{\pro Works well with image data}
+		\onslide<3->{\pro Training can be effectively parallelized}
+		\onslide<4->{\pro Pre-existing models can be fine-tuned for specific tasks}
+		\onslide<5->{\con Does not take into account position or orientation of the object}
 	\end{itemize}
   \end{frame}    
 
@@ -186,9 +187,15 @@
     \frametitle{Challenges when training neural networks}  
     
    	\begin{itemize}
-		\item Finding the optimal neural network layout is often time-consuming
-		\item The model may be sensitive to changes in hyperparameters
-		\item A model may take several hours or even days to train
+		\onslide<2->{\item Finding the optimal neural network layout is often time-consuming}
+		\onslide<3->{\item The model may be sensitive to changes in hyperparameters}
+		\onslide<4->{\item A model may take several hours or even days to train}
+		\onslide<4->{
+		\begin{itemize}
+				\item{This makes hyperparameter searches very expensive}
+		\end{itemize}}		
+		
+
 	\end{itemize}
   \end{frame}  
 
@@ -196,19 +203,20 @@
     \frametitle{Tips and tricks}  
     
    	\begin{itemize}
-		\item Write simple tests for your model \cite{roberts}
+		\item Write unit tests for your model \cite{roberts}
 		\begin{itemize}
       		\item{Check that each layer actually changes weights}
       		\item{Make sure that model converges on tiny data set}
     	\end{itemize}
-		\item Stick to well-known architectures when starting out (e.g. LSTM/GRU for sequential data) 
-		\item Start by using small batch size
+		\onslide<2->{\item Stick to well-known architectures when starting out (e.g. LSTM/GRU for sequential data)}
+		\onslide<3->{\item Start by using small batch size
 		\begin{itemize}
       		\item{Usually makes model less sensitive to other hyperparameters}
-      	\end{itemize}
-		\item Use normalization (batch, layer, group...)
+      	\end{itemize}}
+		\onslide<4->{\item Use normalization (batch, layer, group, weight...)
 		\begin{itemize}
-      		\item{Start by trying batch normalization for CNN and Feed-forward nets and layer normalization for RNN}
+			\item Speeds up convergence significantly
+      		\item{Start by trying batch normalization for CNN and Feed-forward nets and layer normalization for RNN}}
     	\end{itemize}		
 	\end{itemize}
   \end{frame}  
