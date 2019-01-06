@@ -1,9 +1,11 @@
 \documentclass{beamer}
 \usetheme{Antibes}
-\usecolortheme{beaver}
+\usecolortheme{orchid}
 \usepackage{amsmath}
 \usepackage[utf8]{inputenc}
 \usepackage{tikz}
+\usepackage{graphicx}
+\graphicspath{ {./} }
 
 \def\insertauthorindicator{Who?}% Default is "Who?"
 \def\insertinstituteindicator{From?}% Default is "From?"
@@ -157,11 +159,37 @@
     
    	\begin{itemize}
 		\onslide<2->{\pro Accepts input of variable size, i.e. sequences (time series, sentences etc)}
-		\onslide<3->{\pro May learn long-term dependencies}
-		\onslide<4->{\con Training may be slow when sequence length is large}
-		\onslide<5->{\con Can be hard to train}
+		\onslide<3->{
+		\begin{itemize}
+				\item{Can even be used to process tree-structured inputs by using Tree-LSTMs \cite{tai}}
+		\end{itemize}}			
+		\onslide<4->{\pro May learn long-term dependencies}
+		\onslide<5->{\con Training may be slow when sequence length is large}
+		
 	\end{itemize}
   \end{frame}    
+
+  \begin{frame}
+    \frametitle{RNN real life use case: Patent search}  
+    
+	At IPRally we work on automated patent searches. The basic idea is the following:
+	
+	\begin{enumerate}
+		\onslide<2->{\item Patents are transformed to graphs by extracting the relevant information from the patent claims and specifications}
+		\onslide<3->{\item The graphs are then embedded to vectors by using a Tree-LSTM model}
+		\begin{itemize}
+			\onslide<4->{\item {The model is trained by using millions of real-life positive and negative novelty citations from previous patent applications}}
+			\onslide<5->{\item {Patents with a positive citation get vectors that are close to each other}}
+		\end{itemize}
+		\onslide<6->{\item A prior art search for a new patent can then be done by searching for the nearest neighbors of the vector created from the new invention}
+	\end{enumerate}
+
+  \end{frame}    
+
+  \begin{frame}
+    \frametitle{RNN real life use case: Patent search}  
+  \includegraphics[scale=0.32]{patent_search_iprally_slide_20190106} 
+  \end{frame}
 
   \begin{frame}
     \frametitle{Convolutional neural network (CNN)}  
@@ -216,10 +244,17 @@
 		\onslide<4->{\item Use normalization (batch, layer, group, weight...)
 		\begin{itemize}
 			\item Speeds up convergence significantly
-      		\item{Start by trying batch normalization for CNN and Feed-forward nets and layer normalization for RNN}}
+      		\item{Start by trying batch normalization for CNN and feed-forward nets and layer normalization for RNN}}
     	\end{itemize}		
 	\end{itemize}
   \end{frame}  
+
+  \begin{frame}
+    \frametitle{The curious case of the batch size}  
+    
+
+  \end{frame}  
+
 
 %   
    \begin{frame}
@@ -231,6 +266,8 @@
   \bibitem[Hornik, 1991]{hornik} Hornik, Kurt. {\em Approximation Capabilities of Multilayer Feedforward Networks}. Neural Networks, 4(2), 251--257, 1991.
   
   \bibitem[Roberts, 2017]{roberts} Roberts, Chase. \em{How to unit test machine learning code.} Medium.com 2017. \url{https://medium.com/@keeper6928/how-to-unit-test-machine-learning-code-57cf6fd81765}.
+  
+  \bibitem[Tai et. al., 2015]{tai} Tai, Kai Sheng et al. \em{Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks.} ACL 2015. \url{https://arxiv.org/abs/1503.00075}
     
 	\end{thebibliography}   
    \end{frame}  
