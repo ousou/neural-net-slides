@@ -188,7 +188,28 @@
    	\begin{itemize}
 		\item Finding the optimal neural network layout is often time-consuming
 		\item The model may be sensitive to changes in hyperparameters
-		\item A model may take several hours or even days to train. 
+		\item A model may take several hours or even days to train
+	\end{itemize}
+  \end{frame}  
+
+  \begin{frame}
+    \frametitle{Tips and tricks}  
+    
+   	\begin{itemize}
+		\item Write simple tests for your model \cite{roberts}
+		\begin{itemize}
+      		\item{Check that each layer actually changes weights}
+      		\item{Make sure that model converges on tiny data set}
+    	\end{itemize}
+		\item Stick to well-known architectures when starting out (e.g. LSTM/GRU for sequential data) 
+		\item Start by using small batch size
+		\begin{itemize}
+      		\item{Usually makes model less sensitive to other hyperparameters}
+      	\end{itemize}
+		\item Use normalization (batch, layer, group...)
+		\begin{itemize}
+      		\item{Start by trying batch normalization for CNN and Feed-forward nets and layer normalization for RNN}
+    	\end{itemize}		
 	\end{itemize}
   \end{frame}  
 
@@ -200,6 +221,8 @@
   \bibitem[Nielsen, 2015]{nielsen} Nielsen, Michael A. {\em Neural Networks And Deep Learning}. Determination Press, 2015. \url{http://neuralnetworksanddeeplearning.com/}
   
   \bibitem[Hornik, 1991]{hornik} Hornik, Kurt. {\em Approximation Capabilities of Multilayer Feedforward Networks}. Neural Networks, 4(2), 251--257, 1991.
+  
+  \bibitem[Roberts, 2017]{roberts} Roberts, Chase. \em{How to unit test machine learning code.} Medium.com 2017. \url{https://medium.com/@keeper6928/how-to-unit-test-machine-learning-code-57cf6fd81765}.
     
 	\end{thebibliography}   
    \end{frame}  
