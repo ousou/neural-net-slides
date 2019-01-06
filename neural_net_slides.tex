@@ -251,7 +251,16 @@
 
   \begin{frame}
     \frametitle{The curious case of the batch size}  
-    
+  
+  \begin{itemize}
+  	\item Training of neural nets can be sped up by increasing the batch size, since then the GPU/TPU can process more training examples in parallel
+  	\item Unfortunately increasing the batch size may result in a worse model. In extreme cases the model might not learn anything at all! \cite{masters}
+  	\item The basic rule is to increase the learning rate linearly when increasing the batch size (e.g. double learning rate when doubling batch size)
+	\begin{itemize}
+		\item Otherwise the magnitude of the weight updates decreases
+    \end{itemize}
+    \item This means that increasing the batch size trades computational efficiency for stale gradients.  	
+  \end{itemize}
 
   \end{frame}  
 
@@ -268,7 +277,9 @@
   \bibitem[Roberts, 2017]{roberts} Roberts, Chase. \em{How to unit test machine learning code.} Medium.com 2017. \url{https://medium.com/@keeper6928/how-to-unit-test-machine-learning-code-57cf6fd81765}.
   
   \bibitem[Tai et. al., 2015]{tai} Tai, Kai Sheng et al. \em{Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks.} ACL 2015. \url{https://arxiv.org/abs/1503.00075}
-    
+   
+  \bibitem[Masters et. al., 2018]{masters} Masters, Dominic, Luschi, Carlo. \em{Revisiting Small Batch Training for Deep Neural Networks.} arXiv preprint 2018. \url{https://arxiv.org/abs/1804.07612}
+   
 	\end{thebibliography}   
    \end{frame}  
 
