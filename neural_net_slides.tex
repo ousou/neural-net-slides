@@ -5,6 +5,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{tikz}
 \usepackage{graphicx}
+\usetikzlibrary{matrix}
 \graphicspath{ {./} }
 
 \def\insertauthorindicator{Who?}% Default is "Who?"
@@ -86,9 +87,9 @@
     \frametitle{What is a neural network?}  
     At each hidden layer node $i$ the output value is calculated by 
 	\begin{align*}
-    o_{i} = \sigma(\sum{w_{ki}o_{ki-1}} + b_{i}). 
+    o_{i} = f(\sum{w_{ki}o_{ki-1}} + b_{i}). 
     \end{align*}
-    \onslide<2->{The function $\sigma$ is called the activation function. It must be non-linear to allow the network to learn non-linear dependencies.}
+    \onslide<2->{The function $f$ is called the activation function. It must be non-linear to allow the network to learn non-linear dependencies.}
   \end{frame} 
   \begin{frame}
     \frametitle{Training neural networks using SGD}  
@@ -109,7 +110,7 @@
    	\begin{itemize}
 		\item Can approximate any function \cite{hornik}
 		\onslide<2->{\item May learn to respond to unexpected patterns}
-		\onslide<3->{\item Useful especially when the amount of data is large}
+		\onslide<3->{\item Useful especially when the amount of data is large compared to input dimensionality}
 		\onslide<4->{\item Less need for feature engineering compared to traditional ML methods}
 	\end{itemize}
   \end{frame}
@@ -177,8 +178,16 @@
 		\begin{itemize}
 				\item{Can even be used to process tree-structured inputs by using Tree-LSTMs \cite{tai}}
 		\end{itemize}}			
-		\onslide<4->{\pro May learn long-term dependencies}
-		\onslide<5->{\con Training may be slow when sequence length is large}
+		\onslide<4->{\pro May learn long-term dependencies, especially when using LSTM architecture}
+		\onslide<5->{\con Training may be slow when sequence length is large}		
+		\onslide<6->{
+		\begin{itemize}
+				\item{This is because each time step depends on the earlier ones and they must thus be processed sequentially}
+		\end{itemize}}
+		\onslide<7->{\con Prediction accuracy may also suffer if the sequence is long}						\onslide<8->{
+		\begin{itemize}
+				\item{The model may not remember early inputs and can be biased toward the end of the sequence}
+		\end{itemize}}
 		
 	\end{itemize}
   \end{frame}    
@@ -208,20 +217,70 @@
   \begin{frame}
     \frametitle{Convolutional neural network (CNN)}  
     
-	TODO: Picture here    
-
-  Extracts features of two-dimensional input (usually an image) using convolutional and pooling layers.
+  Feed-forward networks do not scale well to images due to the large input size. Convolutional neural networks are constrained to looking only at a small part of the image at a time, and thus the number of weights stays manageable.
+   \vspace{8mm}
+  
+  A CNN uses three types of layers: convolutional, pooling and fully connected. 
+  
 
   \end{frame}  
   
   \begin{frame}
+    \frametitle{CNN - Convolutional layer}  
+	   	\begin{itemize}
+		\onslide<2->{\item Consists of a set of learnable filters}
+		\onslide<3->{\item Each individual filter is small (i.e. small height and width)}
+		\onslide<4->{\item During the forward pass we slide each filter across the entire input and compute dot products between input entries and filter weights}
+		\onslide<5->{\item The idea is that each filter learns to identify some kind of feature (for instance part of a shape)}
+	\end{itemize}
+  \end{frame}   
+  
+  \begin{frame}
+    \frametitle{CNN - Convolutional layer}  
+    
+\begin{tikzpicture}
+\draw[step=0.5cm,color=gray] (-1,-1) grid (1.5,1.5);
+
+\foreach \y in {+1.25,+0.75,+0.25,-0.25,-0.75}
+{
+	\node at (-0.75,\y) {0};
+    \node at (1.25,\y) {0};
+}
+\foreach \x in {+1.25,+0.75,+0.25,-0.25,-0.75}
+{
+	\node at (\x,-0.75) {0};
+    \node at (\x, 1.25) {0};
+}
+\foreach \x in {+0.75,+0.25,-0.25}
+{
+	\node at (\x,-0.25) {1};
+    \node at (\x, 0.75) {1};
+}
+	\node at (-0.25,0.25) {1};
+    \node at (0.75, 0.25) {1};
+	\node at (0.25,0.25) {0};    
+\end{tikzpicture}
+
+  \end{frame}     
+  \begin{frame}
+    \frametitle{CNN - Pooling layer}  
+	   	\begin{itemize}
+		\onslide<2->{\item Reduces the size of the representation by summarizing parts of the input}		\begin{itemize}
+			\onslide<3->{\item {This is done to decrease the amount of computation in the network}}\end{itemize}
+		\onslide<4->{\item A common way is to take the maximum value of a small grid (max pooling)}
+		\begin{itemize}
+			\onslide<5->{\item {For instance if we use max pooling with a filter of size 2x2 we discard 75 percent of the values}}
+			\end{itemize}
+	\end{itemize}
+  \end{frame}     
+  \begin{frame}
     \frametitle{CNN pros and cons}  
     
    	\begin{itemize}
-		\onslide<2->{\pro Works well with image data}
+		\onslide<2->{\pro Works well with image data and text data}
 		\onslide<3->{\pro Training can be effectively parallelized}
 		\onslide<4->{\pro Pre-existing models can be fine-tuned for specific tasks}
-		\onslide<5->{\con Does not take into account position or orientation of the object}
+		\onslide<5->{\con Does not take into account orientation of the object}
 	\end{itemize}
   \end{frame}    
 
@@ -230,12 +289,13 @@
     
    	\begin{itemize}
 		\onslide<2->{\item Finding the optimal neural network layout is often time-consuming}
-		\onslide<3->{\item The model may be sensitive to changes in hyperparameters}
+		\onslide<3->{\item The model may be sensitive to changes in hyperparameters, especially learning rate and activation function}
 		\onslide<4->{\item A model may take several hours or even days to train}
 		\onslide<4->{
 		\begin{itemize}
 				\item{This makes hyperparameter searches very expensive}
-		\end{itemize}}		
+		\end{itemize}}			
+		\onslide<5->{\item It's often hard to know why the model predicts as it does because of the complexity of the model}	
 		
 
 	\end{itemize}
