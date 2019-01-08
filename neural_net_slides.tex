@@ -26,6 +26,7 @@
 
 \def\layersep{2.2cm}
 \begin{document}
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
 
 \frame{\titlepage}
   \begin{frame}
@@ -89,6 +90,19 @@
     \end{align*}
     \onslide<2->{The function $\sigma$ is called the activation function. It must be non-linear to allow the network to learn non-linear dependencies.}
   \end{frame} 
+  \begin{frame}
+    \frametitle{Training neural networks using SGD}  
+  
+  \begin{figure}[sgd]
+    \vspace*{-0.4cm}
+  	\includegraphics[scale=0.22]{sgd_visualization} 
+  	\centering
+	\caption{\tiny \cite{nielsen}, Chapter 1.}  	
+  \end{figure}
+
+	
+	The training data is processed in small batches, and the weights of the model are iteratively updated by going in the direction of the negative gradient of the loss function.
+  \end{frame}  
   \begin{frame}
     \frametitle{Why neural networks?}  
     
