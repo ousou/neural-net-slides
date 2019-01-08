@@ -259,6 +259,20 @@
 	\node at (-0.25,0.25) {1};
     \node at (0.75, 0.25) {1};
 	\node at (0.25,0.25) {0};    
+
+\draw[step=0.5cm,color=blue, line width=0.5mm] (-1,0.5) rectangle (0,1.5);
+
+   \path[->] (1.6,0.5) edge node[above] {dot} (2.9,0.5);
+
+\draw[step=0.5cm,color=blue] (3-0.001,-0.001) grid (4,1);
+	\node at (3.75,0.25) {0};	
+	\node at (3.75,0.75) {1};	
+	\node at (3.25,0.25) {1};	
+	\node at (3.25,0.75) {1};	
+	
+	\path[->] (4.1,0.5) edge node[above] {store value}(5.9,0.5);
+\draw[step=0.5cm,color=red] (6-0.001,-1-0.001) grid (8,1);
+\node at (6.25,0.75) {0};	
 \end{tikzpicture}
 
   \end{frame}     
