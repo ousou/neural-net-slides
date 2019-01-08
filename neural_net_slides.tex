@@ -260,19 +260,133 @@
     \node at (0.75, 0.25) {1};
 	\node at (0.25,0.25) {0};    
 
-\draw[step=0.5cm,color=blue, line width=0.5mm] (-1,0.5) rectangle (0,1.5);
-
-   \path[->] (1.6,0.5) edge node[above] {dot} (2.9,0.5);
-
+\onslide<2->{
 \draw[step=0.5cm,color=blue] (3-0.001,-0.001) grid (4,1);
 	\node at (3.75,0.25) {0};	
 	\node at (3.75,0.75) {1};	
 	\node at (3.25,0.25) {1};	
-	\node at (3.25,0.75) {1};	
-	
+	\node at (3.25,0.75) {1};
+\draw[step=0.5cm,color=red] (6-0.001,-1-0.001) grid (8,1);	
+}
+\onslide<3->{   \path[<->] (1.6,0.5) edge node[above] {dot} (2.9,0.5);
+}
+\onslide<3-4>{
+\draw[step=0.5cm,color=blue, line width=0.5mm] (-1,0.5) rectangle (0,1.5);
+
+
+}
+\onslide<4->{
 	\path[->] (4.1,0.5) edge node[above] {store value}(5.9,0.5);
-\draw[step=0.5cm,color=red] (6-0.001,-1-0.001) grid (8,1);
-\node at (6.25,0.75) {0};	
+\node at (6.25,0.75) {0};
+}
+\onslide<4-4>{
+\draw[step=0.5cm,color=red, line width=0.5mm] (6-0.001,0.5-0.001) rectangle (6.5,1);	
+}
+\onslide<5-5>{
+\draw[step=0.5cm,color=blue, line width=0.5mm] (-0.5,0.5) rectangle (0.5,1.5);
+\draw[step=0.5cm,color=red, line width=0.5mm] (6.5-0.001,0.5-0.001) rectangle (7,1);
+}
+\onslide<5->{
+\node at (6.75,0.75) {1};
+}
+\onslide<6-6>{
+\draw[step=0.5cm,color=blue, line width=0.5mm] (0,0.5) rectangle (1,1.5);
+\draw[step=0.5cm,color=red, line width=0.5mm] (7-0.001,0.5-0.001) rectangle (7.5,1);
+}
+\onslide<6->{
+\node at (7.25,0.75) {1};
+}
+\onslide<7-7>{
+\draw[step=0.5cm,color=blue, line width=0.5mm] (0.5,0.5) rectangle (1.5,1.5);
+\draw[step=0.5cm,color=red, line width=0.5mm] (7.5-0.001,0.5-0.001) rectangle (8,1);
+}
+\onslide<7->{
+\node at (7.75,0.75) {1};
+}
+\onslide<8-8>{
+\draw[step=0.5cm,color=blue, line width=0.5mm] (-1,0) rectangle (0,1);
+\draw[step=0.5cm,color=red, line width=0.5mm] (6-0.001,0-0.001) rectangle (6.5,0.5);
+}
+\onslide<8->{
+\node at (6.25,0.25) {1};
+}
+\onslide<9-9>{
+\draw[step=0.5cm,color=blue, line width=0.5mm] (-0.5,0) rectangle (0.5,1);
+\draw[step=0.5cm,color=red, line width=0.5mm] (6.5-0.001,0-0.001) rectangle (7,0.5);
+}
+\onslide<9->{
+\node at (6.75,0.25) {3};
+}
+\onslide<10-10>{
+\draw[step=0.5cm,color=blue, line width=0.5mm] (0,0) rectangle (1,1);
+\draw[step=0.5cm,color=red, line width=0.5mm] (7-0.001,0-0.001) rectangle (7.5,0.5);
+}
+\onslide<10->{
+\node at (7.25,0.25) {2};
+}
+\onslide<11-11>{
+\draw[step=0.5cm,color=blue, line width=0.5mm] (0.5,0) rectangle (1.5,1);
+\draw[step=0.5cm,color=red, line width=0.5mm] (7.5-0.001,0-0.001) rectangle (8,0.5);
+}
+\onslide<11->{
+\node at (7.75,0.25) {2};
+}
+\onslide<12-12>{
+\draw[step=0.5cm,color=blue, line width=0.5mm] (-1,-0.5) rectangle (0,0.5);
+\draw[step=0.5cm,color=red, line width=0.5mm] (6-0.001,-0.5-0.001) rectangle (6.5,0);
+}
+\onslide<12->{
+\node at (6.25,-0.25) {1};
+}
+\onslide<13-13>{
+\draw[step=0.5cm,color=blue, line width=0.5mm] (-0.5,-0.5) rectangle (0.5,0.5);
+\draw[step=0.5cm,color=red, line width=0.5mm] (6.5-0.001,-0.5-0.001) rectangle (7,0);
+}
+\onslide<13->{
+\node at (6.75,-0.25) {2};
+}
+\onslide<14-14>{
+\draw[step=0.5cm,color=blue, line width=0.5mm] (0,-0.5) rectangle (1,0.5);
+\draw[step=0.5cm,color=red, line width=0.5mm] (7-0.001,-0.5-0.001) rectangle (7.5,0);
+}
+\onslide<14->{
+\node at (7.25,-0.25) {2};
+}
+\onslide<15-15>{
+\draw[step=0.5cm,color=blue, line width=0.5mm] (0.5,-0.5) rectangle (1.5,0.5);
+\draw[step=0.5cm,color=red, line width=0.5mm] (7.5-0.001,-0.5-0.001) rectangle (8,0);
+}
+\onslide<15->{
+\node at (7.75,-0.25) {2};
+}
+\onslide<16-16>{
+\draw[step=0.5cm,color=blue, line width=0.5mm] (-1,-1) rectangle (0,0);
+\draw[step=0.5cm,color=red, line width=0.5mm] (6-0.001,-1-0.001) rectangle (6.5,-0.5);
+}
+\onslide<16->{
+\node at (6.25,-0.75) {1};
+}
+\onslide<17-17>{
+\draw[step=0.5cm,color=blue, line width=0.5mm] (-0.5,-0) rectangle (0.5,0);
+\draw[step=0.5cm,color=red, line width=0.5mm] (6.5-0.001,-1-0.001) rectangle (7,-0.5);
+}
+\onslide<17->{
+\node at (6.75,-0.75) {2};
+}
+\onslide<18-18>{
+\draw[step=0.5cm,color=blue, line width=0.5mm] (0,-0) rectangle (1,0);
+\draw[step=0.5cm,color=red, line width=0.5mm] (7-0.001,-1-0.001) rectangle (7.5,-0.5);
+}
+\onslide<18->{
+\node at (7.25,-0.75) {2};
+}
+\onslide<19-19>{
+\draw[step=0.5cm,color=blue, line width=0.5mm] (0.5,-1) rectangle (1.5,0);
+\draw[step=0.5cm,color=red, line width=0.5mm] (7.5-0.001,-1-0.001) rectangle (8,-0.5);
+}
+\onslide<19->{
+\node at (7.75,-0.75) {1};
+}
 \end{tikzpicture}
 
   \end{frame}     
