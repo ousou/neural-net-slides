@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.13)  8 JAN 2019 21:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.13)  8 JAN 2019 21:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1565,10 +1565,10 @@ LaTeX Font Warning: Size substitutions with differences
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 639.
  ) 
 Here is how much of TeX's memory you used:
- 20486 strings out of 494910
- 402368 string characters out of 6179835
- 531857 words of memory out of 5000000
- 23116 multiletter control sequences out of 15000+600000
+ 20494 strings out of 494910
+ 402432 string characters out of 6179835
+ 532001 words of memory out of 5000000
+ 23124 multiletter control sequences out of 15000+600000
  13239 words of font info for 50 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  50i,17n,70p,415b,962s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1585,7 +1585,7 @@ public/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 nts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.
 pfb>
-Output written on neural_net_slides.pdf (92 pages, 666654 bytes).
+Output written on neural_net_slides.pdf (92 pages, 666686 bytes).
 PDF statistics:
  2610 PDF objects out of 2984 (max. 8388607)
  2465 compressed objects within 25 object streams
