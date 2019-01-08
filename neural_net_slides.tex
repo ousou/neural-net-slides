@@ -561,10 +561,13 @@
   \begin{frame}
     \frametitle{The curious case of the batch size}  
 	
+  \begin{minipage}{.45\linewidth}
   \begin{figure}[convnet]
   \centering
-  \begin{tikzpicture}[scale=2]
-
+  \begin{tikzpicture}[scale=1.5]
+  \tikzstyle{every pin edge}=[<-,shorten <=1pt]
+    \tikzstyle{neuron}=[circle,fill=black!14,minimum size=3pt,inner sep=0pt]
+    \node[neuron,fill=black, pin=above:\scriptsize{Starting point}] (I-1) at (5,5) {};
   	\path[->,color=blue] (5,5) edge (4.5,4.5);
   	\path[->,color=blue] (4.5,4.5) edge (3.9,4.2);
   	\path[->,color=blue] (3.9,4.2) edge (3.4,4);
@@ -575,6 +578,14 @@
   	
   \end{tikzpicture}
   \end{figure}
+  \end{minipage}\hfill
+  \begin{minipage}{.45\linewidth}
+  	\begin{itemize}
+	\item \small{{\color{blue} Blue arrows} - gradient updates with small batch size
+	\item {\color{red} Red arrow} - gradient updates with large batch size 
+	\item  There is no guarantee that taking a larger step using the gradient in the original step leads to the same result as taking several smaller steps.}
+	\end{itemize}
+\end{minipage}
   
   \end{frame}  
 
