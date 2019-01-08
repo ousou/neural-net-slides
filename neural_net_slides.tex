@@ -518,7 +518,8 @@
 		\onslide<4->{\item Use normalization (batch, layer, group, weight...)
 		\begin{itemize}
 			\item Speeds up convergence significantly
-      		\item{Start by trying batch normalization for CNN and feed-forward nets and layer normalization for RNN}}
+      		\item{Start by trying batch normalization for CNN and feed-forward nets and layer normalization for RNN}
+      		\item See \cite{kurita} for a good overview}
     	\end{itemize}		
 	\end{itemize}
   \end{frame}  
@@ -527,17 +528,59 @@
     \frametitle{The curious case of the batch size}  
   
   \begin{itemize}
-  	\item Training of neural nets can be sped up by increasing the batch size, since then the GPU/TPU can process more training examples in parallel
-  	\item Unfortunately increasing the batch size may result in a worse model. In extreme cases the model might not learn anything at all! \cite{masters}
-  	\item The basic rule is to increase the learning rate linearly when increasing the batch size (e.g. double learning rate when doubling batch size)
+  	\item Training of neural nets can be sped up by increasing the batch size, since then the GPU/TPU can process more training examples in parallel.
+  	\onslide<2->{
+  	\item Increasing the batch size decreases the variance of the gradient estimates, but only by the square root of the increase.
+  	}
+  	\onslide<3->{
+  	\item In practice increasing the batch size may result in a worse model. In extreme cases the model might not learn anything at all! \cite{masters}
+  	}
+  	\end{itemize}
+    \end{frame}  
+  	
+  \begin{frame}
+    \frametitle{The curious case of the batch size}  
+  
+  \begin{itemize}
+  	\item The basic rule is to increase the learning rate linearly when increasing the batch size (e.g. double learning rate when doubling batch size).
+  	\onslide<2->{
 	\begin{itemize}
 		\item Otherwise the magnitude of the weight updates decreases
+	}
     \end{itemize}
-    \item This means that increasing the batch size trades computational efficiency for stale gradients.  	
+    \onslide<3->{
+    \item This means that increasing the batch size trades computational efficiency for stale gradients
+    }  	
+    \onslide<4->{
+    \item Training with large batches often converge to sharp minimizers, and this leads to worse test performance \cite{keskar}
+    }
+    
   \end{itemize}
 
   \end{frame}  
 
+  \begin{frame}
+    \frametitle{The curious case of the batch size}  
+  
+  \begin{itemize}
+
+  	\item Whether the model can generalize using large batch sizes depends greatly on the model architecture and the data
+  	\onslide<2->{
+  	\item In some cases training can be done with very large batch sizes
+  	\begin{itemize}
+		\item \cite{goyal} managed to train a ResNet architecture on ImageNet with a batch size of 8192.
+		}
+		\onslide<3->{
+		\item A smaller learning rate was used early to avoid optimization challenges early in the training
+		}
+		\onslide<4->{
+		\item Another solution is to use a small batch size in the beginning and increase it when the speed of the model change decreases
+		}
+    \end{itemize}
+    
+  \end{itemize}
+
+  \end{frame}  
 
 %   
    \begin{frame}[allowframebreaks]
@@ -548,11 +591,17 @@
   
   \bibitem[Hornik, 1991]{hornik} Hornik, Kurt. {\em Approximation Capabilities of Multilayer Feedforward Networks}. Neural Networks, 4(2), 251--257, 1991.
   
-  \bibitem[Roberts, 2017]{roberts} Roberts, Chase. \em{How to unit test machine learning code.} Medium.com 2017. \url{https://medium.com/@keeper6928/how-to-unit-test-machine-learning-code-57cf6fd81765}.
+  \bibitem[Roberts, 2017]{roberts} Roberts, Chase. \em{How to unit test machine learning code.} Medium.com 2017. \url{https://medium.com/@keeper6928/how-to-unit-test-machine-learning-code-57cf6fd81765}.  
+  
+  \bibitem[Kurita, 2018]{kurita} Kurita, Keita. \em{An Overview of Normalization Methods in Deep Learning.} \url{http://mlexplained.com/2018/11/30/an-overview-of-normalization-methods-in-deep-learning/}.
   
   \bibitem[Tai et. al., 2015]{tai} Tai, Kai Sheng et al. \em{Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks.} ACL 2015. \url{https://arxiv.org/abs/1503.00075}
    
   \bibitem[Masters et. al., 2018]{masters} Masters, Dominic, Luschi, Carlo. \em{Revisiting Small Batch Training for Deep Neural Networks.} arXiv preprint 2018. \url{https://arxiv.org/abs/1804.07612}
+  
+  \bibitem[Keskar et. al., 2016]{keskar} Keskar Nitish, et. al. \em{On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima}.  ICLR 2017 conference paper \url{https://arxiv.org/abs/1609.04836}
+  
+  \bibitem[Goyal et. al., 2017]{goyal} Goyal, Priya et. al. \em{Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour} arXiv preprint 2017. \url{https://arxiv.org/abs/1706.02677}
    
 	\end{thebibliography}   
    \end{frame}  
