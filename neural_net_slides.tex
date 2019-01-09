@@ -502,7 +502,7 @@
   \end{frame}  
 
   \begin{frame}
-    \frametitle{Tips and tricks}  
+    \frametitle{Tips and tricks}
     
    	\begin{itemize}
 		\item Write unit tests for your model \cite{roberts}
@@ -511,7 +511,7 @@
       		\item{Make sure that model converges on tiny data set}
     	\end{itemize}
 		\onslide<2->{\item Stick to well-known architectures when starting out (e.g. LSTM/GRU for sequential data)}
-		\onslide<3->{\item Start by using small batch size
+		\onslide<3->{\item Start by using small batch size (for instance 32)
 		\begin{itemize}
       		\item{Usually makes model less sensitive to other hyperparameters}
       	\end{itemize}}
@@ -520,9 +520,24 @@
 			\item Speeds up convergence significantly
       		\item{Start by trying batch normalization for CNN and feed-forward nets and layer normalization for RNN}
       		\item See \cite{kurita} for a good overview}
-    	\end{itemize}		
+      	\end{itemize}    			
 	\end{itemize}
   \end{frame}  
+  
+  \begin{frame}
+  \frametitle{Tips and tricks}
+  	\begin{itemize}
+  		\item Use a subset of the data set to find out a suitable learning rate range
+  		\onslide<2->{
+		\begin{itemize}
+			\item{Start by trying with for instance learning rates $10^{-7}, 10^{-6}, ...,  10^{-2}$, and zoom in to a smaller range later}} 
+			\onslide<3->{\item{The learning rate is too large if the loss fluctuates wildly}}
+      		\onslide<4->{\item{Note that the learning rates that work are affected by the chosen batch size}}
+      	\end{itemize}   
+      	\onslide<5->{  	
+  		\item A good optimizer to try out first is Adam (with default parameters other than learning rate)}
+    \end{itemize}
+  \end{frame}
 
   \begin{frame}
     \frametitle{The curious case of the batch size}  
@@ -553,7 +568,12 @@
     }  	
     \onslide<4->{
     \item Training with large batches often converge to sharp minimizers, and this leads to worse test performance \cite{keskar}
-    }
+    }  	
+    \onslide<5->{
+	\begin{itemize}
+		\item The randomness of the small batch size may actually help to find better local minima!
+	}
+    \end{itemize}
     
   \end{itemize}
 
