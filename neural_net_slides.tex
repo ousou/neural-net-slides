@@ -545,7 +545,7 @@
   \begin{itemize}
   	\item Training of neural nets can be sped up by increasing the batch size, since then the GPU/TPU can process more training examples in parallel.
   	\onslide<2->{
-  	\item Increasing the batch size decreases the variance of the gradient estimates, but only by the square root of the increase.
+  	\item Increasing the batch size decreases the standard deviation of the gradient estimates, but only by the square root of the increase.
   	}
   	\onslide<3->{
   	\item In practice increasing the batch size may result in a worse model. In extreme cases the model might not learn anything at all! \cite{masters}
@@ -564,12 +564,16 @@
 	}
     \end{itemize}
     \onslide<3->{
-    \item This means that increasing the batch size trades computational efficiency for stale gradients
-    }  	
+    \item This means that increasing the batch size trades computational efficiency for stale gradients}
     \onslide<4->{
-    \item Training with large batches often converge to sharp minimizers, and this leads to worse test performance \cite{keskar}
+	\begin{itemize}
+    		\item Also the standard deviation increases by the square root of the batch size increase
+    \end{itemize}
     }  	
     \onslide<5->{
+    \item Training with large batches often converge to sharp minimizers, and this leads to worse test performance \cite{keskar}
+    }  	
+    \onslide<6->{
 	\begin{itemize}
 		\item The randomness of the small batch size may actually help to find better local minima!
 	}
