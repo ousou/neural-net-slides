@@ -532,7 +532,8 @@
 		\begin{itemize}
 			\item{Start by trying with for instance learning rates $10^{-7}, 10^{-6}, ...,  10^{-2}$, and zoom in to a smaller range later}} 
 			\onslide<3->{\item{The learning rate is too large if the loss fluctuates wildly}}
-      		\onslide<4->{\item{Note that the learning rates that work are affected by the chosen batch size}}
+			\onslide<4->{\item{You can start with a large learning rate and decrease it until learning stabilizes}}			
+      		\onslide<5->{\item{Note that the learning rates that work are affected by the chosen batch size}}
       	\end{itemize}   
       	\onslide<5->{  	
   		\item A good optimizer to try out first is Adam (with default parameters other than learning rate)}
